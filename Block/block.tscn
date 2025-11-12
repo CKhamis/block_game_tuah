@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwtqtphn3byrf"]
+
+[ext_resource type="Script" uid="uid://b38hc54o2f78l" path="res://Block/block.gd" id="1_hs5i3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t34gm"]
+
+[node name="block" type="RigidBody3D"]
+script = ExtResource("1_hs5i3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_t34gm")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

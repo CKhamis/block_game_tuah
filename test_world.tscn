@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://sosv553udnir"]
+
+[ext_resource type="PackedScene" uid="uid://bwtqtphn3byrf" path="res://Block/block.tscn" id="1_gy3sr"]
+[ext_resource type="PackedScene" uid="uid://ciloo57jfovtv" path="res://Cursor/cursor.tscn" id="2_1lwx6"]
+[ext_resource type="PackedScene" uid="uid://dv7slgqc826x2" path="res://UI/Game_UI.tscn" id="3_1lwx6"]
+
+[node name="test world" type="Node3D"]
+
+[node name="block" parent="." instance=ExtResource("1_gy3sr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1794888, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4205017, 0, 0)
+use_collision = true
+size = Vector3(6.333069, 1, 1)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78404844, 2.4054246)
+
+[node name="Cursor" parent="." instance=ExtResource("2_1lwx6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.041273355, 1.6373148, 0)
+
+[node name="block2" parent="." instance=ExtResource("1_gy3sr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1437254, 1.0960522, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.3717081, -0.6303786, 0.68151, 1.3586741e-08, 0.7341092, 0.67903143, -0.9283496, -0.25240147, 0.27287436, 5.3595867, 4.153324, 3.6526046)
+shadow_enabled = true
+
+[node name="Cursor2" parent="." instance=ExtResource("2_1lwx6")]
+player_id = 1
+
+[node name="Control" parent="." instance=ExtResource("3_1lwx6")]

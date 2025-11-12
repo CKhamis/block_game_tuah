@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://xmye0scvku4j"]
+
+[ext_resource type="Shader" uid="uid://b631jp1cmf7mf" path="res://glass.gdshader" id="1_6me7m"]
+[ext_resource type="Script" uid="uid://bm5pq2iva1ho3" path="res://Menus/MainMenuButton.gd" id="1_ns4o4"]
+[ext_resource type="PackedScene" uid="uid://ciloo57jfovtv" path="res://Cursor/cursor.tscn" id="3_g58hc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g58hc"]
+
+[sub_resource type="Sky" id="Sky_jca3q"]
+sky_material = SubResource("ProceduralSkyMaterial_g58hc")
+
+[sub_resource type="Environment" id="Environment_3ch0s"]
+background_mode = 2
+sky = SubResource("Sky_jca3q")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pexlp"]
+
+[sub_resource type="Compositor" id="Compositor_1gd2q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ns4o4"]
+render_priority = 0
+shader = ExtResource("1_6me7m")
+shader_parameter/Refraction_Strength = 0.05
+shader_parameter/Fresnel_Power = 1.0
+shader_parameter/Emission_Power = 1.0
+shader_parameter/Specular_Power = 1.0
+shader_parameter/Roughness_Power = 0.1
+shader_parameter/Rim_Power = 0.1
+shader_parameter/Blur = 0.0
+shader_parameter/Taint = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yco5u"]
+size = Vector3(5.15094, 1, 1)
+
+[node name="main_menu" type="Node3D"]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20861816, -1.3935087, -0.41755235)
+use_collision = true
+size = Vector3(9.838135, 1, 2.1339111)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8684845, -0.19750777, 0.45467067, 8.881784e-16, 0.9171992, 0.39842895, -0.49571633, -0.34602937, 0.7965733, 6.31497, 1.5043974, 2.8388922)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.1686258)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3ch0s")
+camera_attributes = SubResource("CameraAttributesPractical_pexlp")
+compositor = SubResource("Compositor_1gd2q")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+script = ExtResource("1_ns4o4")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006074667, 0, 0)
+size = Vector3(5.185547, 1, 1)
+material = SubResource("ShaderMaterial_ns4o4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036712646, 0, 0)
+shape = SubResource("BoxShape3D_yco5u")
+
+[node name="Label3D" type="Label3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5184774)
+text = "Cory"
+
+[node name="Cursor" parent="." instance=ExtResource("3_g58hc")]
+
+[node name="Cursor2" parent="." instance=ExtResource("3_g58hc")]
+player_id = 1
