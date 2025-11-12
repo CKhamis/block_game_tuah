@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgfuurjsds1p6"]
+
+[ext_resource type="Script" uid="uid://bm5pq2iva1ho3" path="res://Menus/MainMenuButton.gd" id="1_v2luu"]
+[ext_resource type="Shader" uid="uid://b631jp1cmf7mf" path="res://glass.gdshader" id="2_b8lsf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ns4o4"]
+render_priority = 0
+shader = ExtResource("2_b8lsf")
+shader_parameter/Refraction_Strength = 0.05
+shader_parameter/Fresnel_Power = 1.0
+shader_parameter/Emission_Power = 1.0
+shader_parameter/Specular_Power = 1.0
+shader_parameter/Roughness_Power = 0.1
+shader_parameter/Rim_Power = 0.1
+shader_parameter/Blur = 0.0
+shader_parameter/Taint = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yco5u"]
+size = Vector3(5.15094, 1, 1)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("1_v2luu")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006074667, 0, 0)
+size = Vector3(5.185547, 1, 1)
+material = SubResource("ShaderMaterial_ns4o4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036712646, 0, 0)
+shape = SubResource("BoxShape3D_yco5u")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5184774)
+text = "Cory"

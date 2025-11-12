@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://xmye0scvku4j"]
+[gd_scene load_steps=13 format=3 uid="uid://xmye0scvku4j"]
 
-[ext_resource type="Shader" uid="uid://b631jp1cmf7mf" path="res://glass.gdshader" id="1_6me7m"]
-[ext_resource type="Script" uid="uid://bm5pq2iva1ho3" path="res://Menus/MainMenuButton.gd" id="1_ns4o4"]
+[ext_resource type="Script" uid="uid://cvigelxh3x3my" path="res://Menus/main_menu.gd" id="1_g58hc"]
+[ext_resource type="PackedScene" uid="uid://cgfuurjsds1p6" path="res://Menus/Menu_Block.tscn" id="2_jca3q"]
 [ext_resource type="PackedScene" uid="uid://ciloo57jfovtv" path="res://Cursor/cursor.tscn" id="3_g58hc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g58hc"]
@@ -17,56 +17,224 @@ sky = SubResource("Sky_jca3q")
 
 [sub_resource type="Compositor" id="Compositor_1gd2q"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ns4o4"]
-render_priority = 0
-shader = ExtResource("1_6me7m")
-shader_parameter/Refraction_Strength = 0.05
-shader_parameter/Fresnel_Power = 1.0
-shader_parameter/Emission_Power = 1.0
-shader_parameter/Specular_Power = 1.0
-shader_parameter/Roughness_Power = 0.1
-shader_parameter/Rim_Power = 0.1
-shader_parameter/Blur = 0.0
-shader_parameter/Taint = Color(1, 1, 1, 1)
+[sub_resource type="Animation" id="Animation_3ch0s"]
+resource_name = "start_pan"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.43527636, 0.43527636),
+"update": 0,
+"values": [Vector3(0, 0, 3.96414), Vector3(0, 0, 2.9529977)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody3D:freeze")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody3D2:freeze")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody3D3:freeze")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yco5u"]
-size = Vector3(5.15094, 1, 1)
+[sub_resource type="Animation" id="Animation_pexlp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 2.9529977)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody3D4:freeze")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody3D:freeze")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody3D2:freeze")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RigidBody3D3:freeze")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_g58hc"]
+resource_name = "more_options"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.4666667),
+"transitions": PackedFloat32Array(1, 0.39229217),
+"update": 0,
+"values": [Vector3(0, 0, 2.9529977), Vector3(0, 0.5837369, 4.189061)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.15547393, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody3D4:freeze")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.36),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1gd2q"]
+_data = {
+&"RESET": SubResource("Animation_pexlp"),
+&"more_options": SubResource("Animation_g58hc"),
+&"start_pan": SubResource("Animation_3ch0s")
+}
 
 [node name="main_menu" type="Node3D"]
+script = ExtResource("1_g58hc")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20861816, -1.3935087, -0.41755235)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32333374, -2.2597196, -0.41755235)
 use_collision = true
-size = Vector3(9.838135, 1, 2.1339111)
+size = Vector3(22.65094, 2.7324219, 2.1339111)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.8684845, -0.19750777, 0.45467067, 8.881784e-16, 0.9171992, 0.39842895, -0.49571633, -0.34602937, 0.7965733, 6.31497, 1.5043974, 2.8388922)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.1686258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.9529977)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3ch0s")
 camera_attributes = SubResource("CameraAttributesPractical_pexlp")
 compositor = SubResource("Compositor_1gd2q")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-script = ExtResource("1_ns4o4")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006074667, 0, 0)
-size = Vector3(5.185547, 1, 1)
-material = SubResource("ShaderMaterial_ns4o4")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036712646, 0, 0)
-shape = SubResource("BoxShape3D_yco5u")
-
-[node name="Label3D" type="Label3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5184774)
-text = "Cory"
+[node name="RigidBody3D" parent="." instance=ExtResource("2_jca3q")]
+transform = Transform3D(1, 0, 0, 0, 0.9990467, 0.043654263, 0, -0.043654263, 0.9990467, 0, 1.4673128, 0)
+button_name = "Start"
 
 [node name="Cursor" parent="." instance=ExtResource("3_g58hc")]
 
 [node name="Cursor2" parent="." instance=ExtResource("3_g58hc")]
 player_id = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1gd2q")
+}
+
+[node name="RigidBody3D2" parent="." instance=ExtResource("2_jca3q")]
+transform = Transform3D(0.99299645, 0.0058330935, -0.11799992, 1.1708359e-10, 0.99878055, 0.049372744, 0.118144006, -0.04902696, 0.9917854, 0, 3.0564322, 0)
+button_action = 2
+button_name = "Quit"
+
+[node name="RigidBody3D3" parent="." instance=ExtResource("2_jca3q")]
+transform = Transform3D(0.9976629, 0, 0.068328716, 0, 1, 0, -0.068328716, 0, 0.9976629, 0, 4.9968185, 0)
+button_action = 1
+button_name = "Options"
+
+[node name="RigidBody3D4" parent="." instance=ExtResource("2_jca3q")]
+transform = Transform3D(0.99935436, 0, 0.035928596, 0, 1, 0, -0.035928596, 0, 0.99935436, 0, 9.506786, 0)
+freeze = true
+button_name = "Start (Evil)"
